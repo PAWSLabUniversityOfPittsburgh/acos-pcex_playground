@@ -25,14 +25,7 @@ $(document).ready(function () {
 		pcex.clearAllWrongBlankLinesHighlight();
 	});
 
-	// -- disabled for acos-pcex
-	// pcex.parse(); 
-	const wait = setInterval(() => {
-		if (window.pcex_example) {
-			pcex.acos_parse(window.pcex_example);
-			clearInterval(wait);
-		}
-	}, 300);
+	pcex.parse();
 
 	$(window).scroll(function (eventObject) {
 		if (!pcex.isScrollNeeded()) {
@@ -129,7 +122,10 @@ var pcex = {
 		var setName = url('?set');
 		var svc = url('?svc') ? url('?svc') : 'masterygrids';  //SVC is an optional parameter
 
-		const load = url('?load');
+		// const load = url('?load');
+		const id = url('-1');
+		const api = 'http://adapt2.sis.pitt.edu/pcex-authoring/api/hub/';
+		const load = `${api}${id}?_t=${new Date().getTime()}`;
 		if (load) $.ajax({
 			url: load,
 			dataType: 'json',
@@ -147,25 +143,6 @@ var pcex = {
 				pcex.init();
 			}
 		});
-	},
-
-	acos_parse: function (example) {
-		var usr = url('?usr');
-		var grp = url('?grp');
-		var sid = url('?sid');
-		var language = url('?lang');
-		var setName = url('?set');
-		var svc = url('?svc') ? url('?svc') : 'masterygrids';  //SVC is an optional parameter
-		const load = url('?load');
-
-		pcex.jsonData = example;
-
-		pcex.numberOfGoals = pcex.jsonData.activityGoals.length;
-		pcex.goalSolvedStates = new Array(pcex.numberOfGoals);
-		pcex.goalShowResultStates = new Array(pcex.numberOfGoals);
-		pcex.setLanguageSettings(language);
-		pcex.setUserCredentials(usr, grp, sid, svc);
-		pcex.init();
 	},
 
 	setUserCredentials: function (usr, grp, sid, svc) {
