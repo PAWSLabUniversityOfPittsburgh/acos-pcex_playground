@@ -40,6 +40,8 @@ build/Release
 
 # Dependency directories
 node_modules/
+!node_modules/acox-pcex
+!node_modules/acox-pcex-*
 jspm_packages/
 
 # Snowpack dependency directory (https://snowpack.dev/)

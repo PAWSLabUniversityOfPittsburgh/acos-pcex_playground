@@ -40,7 +40,7 @@ ACOS_PCEX.initialize = function (req, params, handlers, cb) {
 };
 
 ACOS_PCEX.handleEvent = function (event, payload, req, res, protocolPayload, responseObj, cb) {
-  var dir = ACOS_PCEX.config.logDirectory + '/acos-pcex/' + req.params.contentPackage;
+  // var dir = ACOS_PCEX.config.logDirectory + '/acos-pcex/' + req.params.contentPackage;
   // if (event === 'log') {
   //   fs.mkdir(dir, 0o775, function (err) {
   //     var name = payload.exampleId.replace(/\.|\/|\\|~/g, "-") + '.log';
@@ -70,7 +70,7 @@ ACOS_PCEX.meta = {
   'description': '',
   'author': 'Mohammad Hassany',
   'license': 'MIT',
-  'version': '0.0.1',
+  'version': '0.0.2',
   'url': ''
 };
 
